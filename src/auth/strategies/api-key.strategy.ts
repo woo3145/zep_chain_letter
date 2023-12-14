@@ -6,11 +6,11 @@ import { AuthService } from '../auth.service';
 @Injectable()
 export class ApiKeyStrategy extends PassportStrategy(
   HeaderAPIKeyStrategy,
-  'api-key',
+  'apiKey',
 ) {
   constructor(private readonly authService: AuthService) {
     super(
-      { header: 'api-key', prefix: '' },
+      { header: 'apiKey', prefix: '' },
       true,
       async (apiKey: string, done: (error: Error, data) => void) => {
         if (this.authService.validateApiKey(apiKey)) {
